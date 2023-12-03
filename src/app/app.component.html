@@ -1,0 +1,124 @@
+<nav>
+  <div class="nav-bar flex">
+    <div class="nav-left-link">
+      <a href="#">Admin Dashboard</a>
+    </div>
+
+    <div class="nav-right-links flex">
+      <a href="#"><img src="assets/asset 1.svg">Search</a>
+      <a href="#">Duplicate</a>
+      <a class="three-dot" href="#"><img src="assets/asset 2.svg"></a>
+      <div></div>
+      <a href="#"><img src="assets/asset 3.svg">Try Notion</a>
+      <button mat-icon-button color="warn">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="main">
+  <div class="space-div">
+
+  </div>
+  <div id="center-item">
+    <h1>Admin Dashboard</h1>
+    <div class="center-input-item">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search here..." style="color: white;">
+    </div>
+  </div>
+  <div id="center-table" class="mat-elevation-z8">
+    <div *ngIf="selection.selected.length > 0" class="delete-selected-container">
+      <button mat-icon-button color="warn" class="delete-selected" (click)="deleteSelected()">
+        <mat-icon>delete</mat-icon>
+        Delete Selected
+      </button>
+    </div>
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element !== editedElement; else editElement">
+            {{element.name}}
+          </ng-container>
+          <ng-template #editElement>
+            <input [(ngModel)]="editedElement.name" placeholder="Enter Name.." class="internal-input">
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!--Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element !== editedElement; else editElement">
+            {{element.email}}
+          </ng-container>
+          <ng-template #editElement>
+            <input [(ngModel)]="editedElement.email" placeholder="Enter Email.." class="internal-input">
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Role Column -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let element"> <ng-container *ngIf="element !== editedElement; else editElement">
+            {{element.role}}
+          </ng-container>
+          <ng-template #editElement>
+            <input [(ngModel)]="editedElement.role" placeholder="Enter Role.." class="internal-input">
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element !== editedElement; else editElements">
+            <button mat-icon-button color="primary" (click)="editElement(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteElement(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </ng-container>
+          <ng-template #editElements>
+            <button mat-icon-button (click)="saveElement(element)">
+              <mat-icon>save</mat-icon>
+            </button>
+            <button mat-icon-button (click)="cancelEdit()">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </ng-template>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.selected-row]="selection.isSelected(row)">
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"
+      [length]="dataSource.paginator?.length" [pageSize]="10" [pageIndex]="0">
+    </mat-paginator>
+  </div>
+</div>

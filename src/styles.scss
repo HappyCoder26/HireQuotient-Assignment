@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+:root {
+    --primary-text-color: #ffffff;
+    --padding-inline-section: 0px 10px;
+    --bg-color: #191919;
+    --accent-color: rgba(60, 58, 58, 0.491);
+}
+
+h1 {
+    font-size: 2.7rem;
+}
+
+h2 {
+    font-size: 1.9rem;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    color: var(--primary-text-color);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

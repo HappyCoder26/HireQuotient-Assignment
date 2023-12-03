@@ -1,0 +1,291 @@
+// utility class
+.container {
+    padding: var(--padding-inline-section);
+    overflow: hidden;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.primary-button {
+    background-color: var(--accent-color);
+    color: white !important;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.2s ease-out;
+}
+
+.primary-button:hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 3px var(--secondary-text-color);
+}
+
+//Navigation bar
+.nav-bar {
+    justify-content: space-between;
+    padding-inline: 15px;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    background-color: var(--bg-color);
+}
+
+.nav-left-link {
+    padding: 6px 6px;
+}
+
+.nav-left-link:hover {
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}
+
+.nav-right-links {
+    width: 25%;
+    justify-content: space-evenly;
+}
+
+.nav-right-links div {
+    width: 1px;
+    height: 17px;
+    background: rgba(255, 255, 255, 0.13);
+}
+
+.nav-right-links a {
+    display: flex;
+    align-items: center;
+    padding: 6px 6px;
+    border-radius: 5px;
+    transition: 0.2s ease-out;
+}
+
+.nav-right-links a:hover {
+    background-color: var(--accent-color);
+}
+
+.nav-right-links img {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+    filter: invert(100%);
+    /* Invert the color to make black SVGs appear white */
+}
+
+.three-dot img {
+    margin-right: 0px;
+}
+
+.nav-right-links button {
+    display: none;
+}
+
+//Main Body
+#main {
+    height: calc(100% - 40px);
+    width: 100%;
+    // background-color: yellow;
+    background-color: var(--bg-color);
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 20% 80%;
+}
+
+#center-item {
+    // background-color: green;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}
+
+#center-item h1 {
+    font-weight: 700;
+    font-size: 40px;
+    color: var(--primary-text-color);
+    grid-row: 2/3;
+    grid-column: 1/2;
+    align-self: self-end;
+}
+
+.center-input-item {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    align-self: self-end;
+    border: 1px solid white;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    margin-right: 2px;
+}
+
+::placeholder {
+    color: white;
+}
+
+.internal-input::placeholder {
+    color: black;
+}
+
+#center-table {
+    // background-color: pink;
+    grid-row: 2;
+    grid-column: 2/3;
+    height: 70vh;
+    overflow-y: auto;
+}
+
+//Table 
+table {
+    width: 100%;
+}
+
+//checkbox
+.example-section {
+    margin: 12px 0;
+}
+
+.example-margin {
+    margin: 0 12px;
+}
+
+//Action-buttons
+
+.action-buttons {
+    text-align: center;
+}
+
+.selected-row {
+    background-color: rgb(201, 197, 197);
+}
+
+@media screen and (max-width: 776px) {
+
+    .nav-bar {
+        justify-content: space-between;
+        padding-inline: 15px;
+        align-items: center;
+        height: 30px;
+        width: 100%;
+        background-color: var(--bg-color);
+        overflow: initial;
+
+    }
+
+    .nav-right-links a {
+        display: none;
+    }
+
+    .nav-right-links div {
+        display: none;
+    }
+
+    .nav-right-links button {
+        display: initial;
+        cursor: pointer;
+    }
+
+    .nav-right-links {
+        width: 25%;
+        justify-content: end;
+    }
+
+    #main {
+        height: calc(100% - 40px);
+        width: 100%;
+        // background-color: yellow;
+        background-color: var(--bg-color);
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 80%;
+    }
+
+    .space-div {
+        display: none;
+    }
+
+    #center-item {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+    }
+
+    #center-item h1 {
+        font-weight: 600;
+        font-size: 26px;
+        color: var(--primary-text-color);
+        grid-row: 1/2;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .center-input-item {
+        grid-row: 2/3;
+        grid-column: 1;
+        align-self: center;
+        justify-self: center;
+        border: 1px solid white;
+        padding: 4px;
+        border-radius: 2px;
+        margin-bottom: 2px;
+        margin-right: 1px;
+    }
+
+    #center-table {
+        grid-row: 2;
+        grid-column: 1;
+        height: 70vh;
+        overflow-y: auto;
+    }
+
+    .mat-table {
+        overflow-x: auto;
+    }
+
+    .mat-cell {
+        font-size: 2.6vw;
+    }
+
+    .internal-input {
+        font-size: 11px;
+        margin: 0 2px;
+        padding: 1px;
+    }
+
+    //checkbox
+    .example-section {
+        margin: 8px 0;
+    }
+
+    .example-margin {
+        margin: 0 8px;
+    }
+}
+
+@media screen and (min-width: 777px) and (max-width: 975px) {
+    .nav-right-links button {
+        display: none;
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (max-width: 976px) {
+    .nav-bar {
+        justify-content: space-between;
+        padding-inline: 15px;
+        align-items: center;
+        height: 40px;
+        width: 100%;
+        background-color: var(--bg-color);
+        overflow: initial;
+    }
+
+    .nav-right-links {
+        width: 40%;
+    }
+
+}
