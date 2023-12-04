@@ -144,6 +144,19 @@ table {
     width: 100%;
 }
 
+/* Container for action buttons */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-button {
+    width: 30px;
+    font-size: 16px;
+}
+
 //checkbox
 .example-section {
     margin: 12px 0;
@@ -161,6 +174,15 @@ table {
 
 .selected-row {
     background-color: rgb(201, 197, 197);
+}
+
+@media screen and (max-width: 450px) {
+
+    .action-button {
+        width: 25px;
+        font-size: 13px;
+    }
+
 }
 
 @media screen and (max-width: 776px) {

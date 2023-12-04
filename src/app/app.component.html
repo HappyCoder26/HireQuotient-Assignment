@@ -90,24 +90,26 @@
 
       <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Actions </th>
         <td mat-cell *matCellDef="let element">
-          <ng-container *ngIf="element !== editedElement; else editElements">
-            <button mat-icon-button color="primary" (click)="editElement(element)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="deleteElement(element)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </ng-container>
-          <ng-template #editElements>
-            <button mat-icon-button (click)="saveElement(element)">
-              <mat-icon>save</mat-icon>
-            </button>
-            <button mat-icon-button (click)="cancelEdit()">
-              <mat-icon>cancel</mat-icon>
-            </button>
-          </ng-template>
+          <div class="action-buttons">
+            <ng-container *ngIf="element !== editedElement; else editElements">
+              <button mat-icon-button color="primary" class="action-button" (click)="editElement(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" class="action-button" (click)="deleteElement(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </ng-container>
+            <ng-template #editElements>
+              <button mat-icon-button color="primary" class="action-button" (click)="saveElement(element)">
+                <mat-icon>save</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" class="action-button" (click)="cancelEdit()">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </ng-template>
+          </div>
 
         </td>
       </ng-container>
